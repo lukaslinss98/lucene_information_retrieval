@@ -5,31 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d1b2361-63f1-404d-8eb4-ea984f198c29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CranfieldQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/IntelliLang.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/CranfieldDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CranfieldDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/CranfieldParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/CranfieldParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/cran.all.1400" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/lukas/app/CranfieldParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lukas/app/CranfieldParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/CranfieldDocument.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/CranfieldParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/CranfieldParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lukas/app/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lukas/app/CranfieldParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test/com/lukas/app/CranfieldParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/lucene-individual-project-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/lucene-individual-project-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.lukas.app.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.lukas.app.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.lukas.app.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.lukas.app.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lukas/app/CranfieldParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lukas/app/CranfieldParserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.lukas.app.AppTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.lukas.app.CranfieldParserTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.lukas.app.AppTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.lukas.app.CranfieldParserTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lukas/app/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lukas/app/CranfieldParserTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +47,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -87,7 +87,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MonokaiProSettingsConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -113,9 +113,9 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lukas.app.Main" />
+  <component name="RunManager" selected="Application.Application">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lukas.app.Application" />
       <module name="lucene-individual-project" />
       <extension name="coverage">
         <pattern>
@@ -192,9 +192,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CranfieldParserTest.givenRawQuery_ExpectObjectContainingIdAndText" />
+        <item itemvalue="Application.Application" />
         <item itemvalue="JUnit.CranfieldParserTest.givenRawDocument_ExpectObjectContainingIdAndAuthor" />
+        <item itemvalue="JUnit.CranfieldParserTest.givenRawQuery_ExpectObjectContainingIdAndText" />
         <item itemvalue="JUnit.CranfieldParserTest" />
         <item itemvalue="JUnit.CranfieldParserTest.foo" />
       </list>
@@ -226,6 +226,7 @@
       <workItem from="1759420960839" duration="177000" />
       <workItem from="1759421140852" duration="28000" />
       <workItem from="1759427162211" duration="129000" />
+      <workItem from="1759427543133" duration="584000" />
     </task>
     <servers />
   </component>

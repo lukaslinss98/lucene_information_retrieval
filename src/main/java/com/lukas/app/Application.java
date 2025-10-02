@@ -10,10 +10,10 @@ import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.index.Term;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -28,7 +28,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Main {
+public class Application {
     private static final Analyzer ANALYZER = new StandardAnalyzer();
     private static final String INDEX_DIRECTORY_PATH = "../index";
 
@@ -36,7 +36,7 @@ public class Main {
         Directory indexDir = FSDirectory.open(Paths.get(INDEX_DIRECTORY_PATH));
         IndexWriter indexWriter = createWriter(indexDir);
 
-        ClassLoader classLoader = Main.class.getClassLoader();
+        ClassLoader classLoader = Application.class.getClassLoader();
         URL documentsUrl = classLoader.getResource("cran.all.1400");
         URL queriesUrl = classLoader.getResource("cran.qry");
 
@@ -48,7 +48,7 @@ public class Main {
 
         Arrays.stream(rawCollection.split("(?=\\.I)"))
                 .map(CranfieldParser::parseDocument)
-                .map(Main::toLuceneDocument)
+                .map(Application::toLuceneDocument)
                 .forEach(document -> addDocument(document, indexWriter));
 
         DirectoryReader directoryReader = DirectoryReader.open(indexDir);
@@ -58,7 +58,7 @@ public class Main {
                 .map(CranfieldParser::parseQuery)
                 .map(cranfieldQuery -> query(cranfieldQuery, indexSearcher))
                 .map(entry -> createResultStringsForQuery(entry.getKey(), entry.getValue()))
-                .collect(Collectors.joining());
+                .collect(Collectors.joining("\n"));
 
         System.out.println(trecEvalResults);
 
@@ -78,15 +78,15 @@ public class Main {
     }
 
     private static Map.Entry<CranfieldQuery, TopDocs> query(CranfieldQuery cranfieldQuery, IndexSearcher indexSearcher) {
-//        try {
-//            QueryParser parser = new QueryParser("text", ANALYZER);
-//            Query query = parser.parse(QueryParser.escape(cranfieldQuery.text()));
-//            TopDocs topDocs = indexSearcher.search(query, 50);
-//            return new AbstractMap.SimpleEntry<>(cranfieldQuery, topDocs);
-            return null;
-//        } catch (IOException | ParseException e ) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            QueryParser parser = new QueryParser("text", ANALYZER);
+            Query query = parser.parse(QueryParser.escape(cranfieldQuery.text()));
+            TopDocs topDocs = indexSearcher.search(query, 50);
+
+            return new AbstractMap.SimpleEntry<>(cranfieldQuery, topDocs);
+        } catch (IOException | ParseException e ) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void addDocument(Document document, IndexWriter iwriter) {
