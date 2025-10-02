@@ -1,1 +1,4 @@
-com/lukas/app/App.class
+com/lukas/app/models/CranfieldDocument.class
+com/lukas/app/Main.class
+com/lukas/app/CranfieldParser.class
+com/lukas/app/models/CranfieldQuery.class

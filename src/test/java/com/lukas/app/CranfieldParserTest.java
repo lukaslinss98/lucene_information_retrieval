@@ -1,5 +1,7 @@
 package com.lukas.app;
 
+import com.lukas.app.models.CranfieldDocument;
+import com.lukas.app.models.CranfieldQuery;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,7 +11,7 @@ class CranfieldParserTest {
     @Test
     void givenRawDocument_ExpectObjectContainingIdAndAuthor() {
         // given
-        String rawDocumnet = """
+        String rawDocument = """
                                 .I 1
                                 .T
                         experimental investigation of the aerodynamics of a
@@ -37,7 +39,7 @@ class CranfieldParserTest {
                         the specific configuration of the experiment .
                 """;
         // when
-        CranfieldDocument cranfieldDocument = CranfieldParser.parse(rawDocumnet);
+        CranfieldDocument cranfieldDocument = CranfieldParser.parseDocument(rawDocument);
 
         // then
         assertThat(cranfieldDocument)
@@ -54,4 +56,28 @@ class CranfieldParserTest {
                 );
     }
 
+    @Test
+    void givenRawQuery_ExpectObjectContainingIdAndText() {
+        // given
+        String rawQuery = """
+                .I 001
+                .W
+                what similarity laws must be obeyed when constructing aeroelastic models
+                of heated high speed aircraft .
+                """;
+        // when
+        CranfieldQuery query = CranfieldParser.parseQuery(rawQuery);
+
+        // then
+        assertThat(query)
+                .isNotNull()
+                .extracting(
+                        CranfieldQuery::id,
+                        CranfieldQuery::text
+                )
+                .contains(
+                        1,
+                        "what similarity laws must be obeyed when constructing aeroelastic models of heated high speed aircraft ."
+                );
+    }
 }

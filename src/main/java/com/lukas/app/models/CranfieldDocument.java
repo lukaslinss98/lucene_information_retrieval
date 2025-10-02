@@ -1,4 +1,4 @@
-package com.lukas.app;
+package com.lukas.app.models;
 
 public record CranfieldDocument(
         Integer id,

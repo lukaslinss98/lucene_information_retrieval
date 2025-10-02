@@ -11,8 +11,6 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.queryparser.classic.ParseException;
-import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
@@ -80,14 +78,15 @@ public class Main {
     }
 
     private static Map.Entry<CranfieldQuery, TopDocs> query(CranfieldQuery cranfieldQuery, IndexSearcher indexSearcher) {
-        try {
-            QueryParser parser = new QueryParser("text", ANALYZER);
-            Query query = parser.parse(QueryParser.escape(cranfieldQuery.text()));
-            TopDocs topDocs = indexSearcher.search(query, 50);
-            return new AbstractMap.SimpleEntry<>(cranfieldQuery, topDocs);
-        } catch (IOException | ParseException e ) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            QueryParser parser = new QueryParser("text", ANALYZER);
+//            Query query = parser.parse(QueryParser.escape(cranfieldQuery.text()));
+//            TopDocs topDocs = indexSearcher.search(query, 50);
+//            return new AbstractMap.SimpleEntry<>(cranfieldQuery, topDocs);
+            return null;
+//        } catch (IOException | ParseException e ) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private static void addDocument(Document document, IndexWriter iwriter) {

@@ -1,4 +1,7 @@
-package com.lukas.app;
+package com.lukas.app.models;
 
-public record CranfieldQuery() {
+public record CranfieldQuery(
+        Integer id,
+        String text
+) {
 }
