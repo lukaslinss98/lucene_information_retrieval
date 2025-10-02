@@ -1,51 +1,93 @@
 package com.lukas.app;
 
+import com.lukas.app.models.CranfieldDocument;
+import com.lukas.app.models.CranfieldQuery;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
+import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.Term;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.TermQuery;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.AbstractMap;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        URL resource = Main.class.getClassLoader().getResource("cran.all.1400");
-        assert resource != null;
-        String collection = Files.readString(Paths.get(resource.toURI()));
+    private static final Analyzer ANALYZER = new StandardAnalyzer();
+    private static final String INDEX_DIRECTORY_PATH = "../index";
 
-        Analyzer analyzer = new StandardAnalyzer();
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        Directory indexDir = FSDirectory.open(Paths.get(INDEX_DIRECTORY_PATH));
+        IndexWriter indexWriter = createWriter(indexDir);
 
-        Directory directory = FSDirectory.open(Paths.get("../index"));
-        IndexWriterConfig config = new IndexWriterConfig(analyzer);
+        ClassLoader classLoader = Main.class.getClassLoader();
+        URL documentsUrl = classLoader.getResource("cran.all.1400");
+        URL queriesUrl = classLoader.getResource("cran.qry");
 
-        // Index opening mode
-        // IndexWriterConfig.OpenMode.CREATE = create a new index
-        // IndexWriterConfig.OpenMode.APPEND = open an existing index
-        // IndexWriterConfig.OpenMode.CREATE_OR_APPEND = create an index if it
-        // does not exist, otherwise it opens it
-        config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
+        assert documentsUrl != null;
+        assert queriesUrl != null;
 
-        IndexWriter iwriter = new IndexWriter(directory, config);
+        String rawCollection = Files.readString(Paths.get(documentsUrl.toURI()));
+        String rawQueries = Files.readString(Paths.get(queriesUrl.toURI()));
 
-        Arrays.stream(collection.split("(?=\\.I)"))
-                .map(CranfieldParser::parse)
-                .peek(System.out::println)
+        Arrays.stream(rawCollection.split("(?=\\.I)"))
+                .map(CranfieldParser::parseDocument)
                 .map(Main::toLuceneDocument)
-                .forEach(document -> addDocument(document, iwriter));
+                .forEach(document -> addDocument(document, indexWriter));
 
-        iwriter.close();
-        directory.close();
+        DirectoryReader directoryReader = DirectoryReader.open(indexDir);
+        IndexSearcher indexSearcher = new IndexSearcher(directoryReader);
+
+        String trecEvalResults = Arrays.stream(rawQueries.split("(?=\\.I)"))
+                .map(CranfieldParser::parseQuery)
+                .map(cranfieldQuery -> query(cranfieldQuery, indexSearcher))
+                .map(entry -> createResultStringsForQuery(entry.getKey(), entry.getValue()))
+                .collect(Collectors.joining());
+
+        System.out.println(trecEvalResults);
+
+        indexWriter.close();
+        indexDir.close();
+    }
+
+    private static String createResultStringsForQuery(CranfieldQuery query, TopDocs topDocs) {
+        // format: query_id Q0 doc_id rank score run_name
+        return Arrays.stream(topDocs.scoreDocs)
+                .map(scoreDoc -> "%s Q0 %s %s %s myrun".formatted(
+                        query.id(),
+                        "doc_id",
+                        "rank",
+                        scoreDoc.score)
+                ).collect(Collectors.joining("\n"));
+    }
+
+    private static Map.Entry<CranfieldQuery, TopDocs> query(CranfieldQuery cranfieldQuery, IndexSearcher indexSearcher) {
+        try {
+            QueryParser parser = new QueryParser("text", ANALYZER);
+            Query query = parser.parse(QueryParser.escape(cranfieldQuery.text()));
+            TopDocs topDocs = indexSearcher.search(query, 50);
+            return new AbstractMap.SimpleEntry<>(cranfieldQuery, topDocs);
+        } catch (IOException | ParseException e ) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void addDocument(Document document, IndexWriter iwriter) {
@@ -64,5 +106,11 @@ public class Main {
         document.add(new TextField("text", cranfieldDocument.text(), Field.Store.YES));
 
         return document;
+    }
+
+    private static IndexWriter createWriter(Directory indexDirectory) throws IOException {
+        IndexWriterConfig config = new IndexWriterConfig(ANALYZER);
+        config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
+        return new IndexWriter(indexDirectory, config);
     }
 }
