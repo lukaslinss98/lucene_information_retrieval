@@ -8,7 +8,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>lucene-individual-project</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.lukas-linss.com</url>
 
     <properties>
@@ -29,6 +28,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.5.0-jre</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>

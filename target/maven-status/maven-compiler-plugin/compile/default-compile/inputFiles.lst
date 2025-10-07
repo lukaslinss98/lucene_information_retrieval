@@ -2,3 +2,5 @@
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/CranfieldParser.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/CranfieldDocument.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/CranfieldQuery.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/QueryResult.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/ScoredDocument.java

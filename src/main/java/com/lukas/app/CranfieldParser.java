@@ -14,7 +14,7 @@ public class CranfieldParser {
         String author = null;
         String text = null;
 
-        Pattern fieldPattern = Pattern.compile("\\.(?<field>[A-Z])\\s+(?<value>(?:.*?)(?=\\.[A-Z]|\\z))", Pattern.DOTALL);
+        Pattern fieldPattern = Pattern.compile("\\.(?<field>[A-Z])\\s+(?<value>.*?(?=\\.[A-Z]|\\z))", Pattern.DOTALL);
         Matcher matcher = fieldPattern.matcher(rawDocument);
 
         while (matcher.find()) {
@@ -37,23 +37,13 @@ public class CranfieldParser {
         );
     }
 
-    public static CranfieldQuery parseQuery(String rawQuery) {
-        Integer id = null;
-        String text = null;
-
-        Pattern fieldPattern = Pattern.compile("\\.(?<field>[A-Z])\\s+(?<value>(?:.*?)(?=\\.[A-Z]|\\z))", Pattern.DOTALL);
+    public static CranfieldQuery parseQuery(String rawQuery, long indexOfQuery) {
+        Pattern fieldPattern = Pattern.compile("(?m)^\\.W\\s*\\R([\\s\\S]*)");
         Matcher matcher = fieldPattern.matcher(rawQuery);
-
-        while (matcher.find()) {
-            String fieldType = matcher.group(1);
-            String fieldContent = matcher.group(2).replaceAll("\\s+", " ").trim();
-
-
-            switch (fieldType) {
-                case "I" -> id = Integer.parseInt(fieldContent);
-                case "W" -> text = fieldContent;
-            }
+        if (matcher.find()) {
+            String queryText = matcher.group(1).replaceAll("\\s+", " ").trim();
+            return new CranfieldQuery(indexOfQuery, queryText);
         }
-        return new CranfieldQuery(id, text);
+        throw new IllegalArgumentException("Invalid Query format");
     }
 }

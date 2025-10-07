@@ -1,4 +1,6 @@
+com/lukas/app/models/QueryResult.class
 com/lukas/app/models/CranfieldDocument.class
+com/lukas/app/models/ScoredDocument.class
 com/lukas/app/Application.class
 com/lukas/app/CranfieldParser.class
 com/lukas/app/models/CranfieldQuery.class

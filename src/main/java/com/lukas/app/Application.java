@@ -1,12 +1,10 @@
 package com.lukas.app;
 
-import com.lukas.app.models.CranfieldDocument;
-import com.lukas.app.models.CranfieldQuery;
+import com.google.common.collect.Streams;
+import com.lukas.app.models.*;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
@@ -14,7 +12,7 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
@@ -23,10 +21,13 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.AbstractMap;
 import java.util.Arrays;
-import java.util.Map;
+import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static com.lukas.app.CranfieldParser.parseQuery;
+import static java.util.stream.Collectors.collectingAndThen;
 
 public class Application {
     private static final Analyzer ANALYZER = new StandardAnalyzer();
@@ -44,47 +45,58 @@ public class Application {
         assert queriesUrl != null;
 
         String rawCollection = Files.readString(Paths.get(documentsUrl.toURI()));
-        String rawQueries = Files.readString(Paths.get(queriesUrl.toURI()));
+        String rawQueriesFile = Files.readString(Paths.get(queriesUrl.toURI()));
 
         Arrays.stream(rawCollection.split("(?=\\.I)"))
                 .map(CranfieldParser::parseDocument)
-                .map(Application::toLuceneDocument)
+                .map(CranfieldDocument::toLuceneDocument)
                 .forEach(document -> addDocument(document, indexWriter));
 
-        DirectoryReader directoryReader = DirectoryReader.open(indexDir);
-        IndexSearcher indexSearcher = new IndexSearcher(directoryReader);
+        indexWriter.close();
 
-        String trecEvalResults = Arrays.stream(rawQueries.split("(?=\\.I)"))
-                .map(CranfieldParser::parseQuery)
+        IndexSearcher indexSearcher = new IndexSearcher(DirectoryReader.open(indexDir));
+
+        String[] rawQueries = rawQueriesFile.split("(?=\\.I)");
+
+        String trecEvalResults = Streams.mapWithIndex(
+                        Arrays.stream(rawQueries),
+                        (rawQuery, index) -> parseQuery(rawQuery, index + 1)
+                )
                 .map(cranfieldQuery -> query(cranfieldQuery, indexSearcher))
-                .map(entry -> createResultStringsForQuery(entry.getKey(), entry.getValue()))
+                .map(QueryResult::createTrecEvalResult)
                 .collect(Collectors.joining("\n"));
 
         System.out.println(trecEvalResults);
+        Files.writeString(Paths.get("../query_results.txt"), trecEvalResults);
 
-        indexWriter.close();
         indexDir.close();
     }
 
-    private static String createResultStringsForQuery(CranfieldQuery query, TopDocs topDocs) {
-        // format: query_id Q0 doc_id rank score run_name
-        return Arrays.stream(topDocs.scoreDocs)
-                .map(scoreDoc -> "%s Q0 %s %s %s myrun".formatted(
-                        query.id(),
-                        "doc_id",
-                        "rank",
-                        scoreDoc.score)
-                ).collect(Collectors.joining("\n"));
-    }
 
-    private static Map.Entry<CranfieldQuery, TopDocs> query(CranfieldQuery cranfieldQuery, IndexSearcher indexSearcher) {
+    private static QueryResult query(CranfieldQuery cranfieldQuery, IndexSearcher indexSearcher) {
         try {
             QueryParser parser = new QueryParser("text", ANALYZER);
             Query query = parser.parse(QueryParser.escape(cranfieldQuery.text()));
-            TopDocs topDocs = indexSearcher.search(query, 50);
+            List<ScoreDoc> scoreDocs = Arrays.stream(indexSearcher.search(query, 50).scoreDocs).toList();
 
-            return new AbstractMap.SimpleEntry<>(cranfieldQuery, topDocs);
-        } catch (IOException | ParseException e ) {
+            return IntStream.range(0, scoreDocs.size())
+                    .mapToObj(index -> {
+                        try {
+                            return new ScoredDocument(
+                                    indexSearcher.storedFields().document(scoreDocs.get(index).doc).get("id"),
+                                    scoreDocs.get(index).score,
+                                    index + 1
+                            );
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    })
+                    .collect(collectingAndThen(
+                            Collectors.toList(),
+                            list -> new QueryResult(cranfieldQuery, list)
+                    ));
+
+        } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
     }
@@ -95,16 +107,6 @@ public class Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private static Document toLuceneDocument(CranfieldDocument cranfieldDocument) {
-        Document document = new Document();
-        document.add(new TextField("id", cranfieldDocument.id().toString(), Field.Store.YES));
-        document.add(new TextField("title", cranfieldDocument.title(), Field.Store.YES));
-        document.add(new TextField("author", cranfieldDocument.author(), Field.Store.YES));
-        document.add(new TextField("text", cranfieldDocument.text(), Field.Store.YES));
-
-        return document;
     }
 
     private static IndexWriter createWriter(Directory indexDirectory) throws IOException {
