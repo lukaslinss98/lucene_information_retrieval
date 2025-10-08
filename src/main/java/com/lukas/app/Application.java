@@ -1,9 +1,12 @@
 package com.lukas.app;
 
 import com.google.common.collect.Streams;
-import com.lukas.app.models.*;
+import com.lukas.app.models.CranfieldDocument;
+import com.lukas.app.models.CranfieldQuery;
+import com.lukas.app.models.QueryResult;
+import com.lukas.app.models.ScoredDocument;
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
@@ -21,19 +24,19 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static com.lukas.app.CranfieldParser.parseQuery;
-import static java.util.stream.Collectors.collectingAndThen;
 
 public class Application {
-    private static final Analyzer ANALYZER = new StandardAnalyzer();
+    private static final Analyzer ANALYZER = new WhitespaceAnalyzer(10);
     private static final String INDEX_DIRECTORY_PATH = "../index";
 
     public static void main(String[] args) throws URISyntaxException, IOException {
+
         Directory indexDir = FSDirectory.open(Paths.get(INDEX_DIRECTORY_PATH));
         IndexWriter indexWriter = createWriter(indexDir);
 
@@ -79,23 +82,18 @@ public class Application {
             Query query = parser.parse(QueryParser.escape(cranfieldQuery.text()));
             List<ScoreDoc> scoreDocs = Arrays.stream(indexSearcher.search(query, 50).scoreDocs).toList();
 
-            return IntStream.range(0, scoreDocs.size())
-                    .mapToObj(index -> {
-                        try {
-                            return new ScoredDocument(
-                                    indexSearcher.storedFields().document(scoreDocs.get(index).doc).get("id"),
-                                    scoreDocs.get(index).score,
-                                    index + 1
-                            );
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    })
-                    .collect(collectingAndThen(
-                            Collectors.toList(),
-                            list -> new QueryResult(cranfieldQuery, list)
-                    ));
+            ArrayList<ScoredDocument> scoredDocuments = new ArrayList<>();
 
+            for (int i = 0; i < scoreDocs.size(); i++) {
+                ScoreDoc scoreDoc = scoreDocs.get(i);
+                ScoredDocument scoredDocument = new ScoredDocument(
+                        indexSearcher.storedFields().document(scoreDoc.doc).get("id"),
+                        scoreDoc.score,
+                        i + 1
+                );
+                scoredDocuments.add(scoredDocument);
+            }
+            return new QueryResult(cranfieldQuery, scoredDocuments);
         } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
