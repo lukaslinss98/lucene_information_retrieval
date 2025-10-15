@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d1b2361-63f1-404d-8eb4-ea984f198c29" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/QueryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/CranfieldParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/CranfieldParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CranfieldDocument.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CranfieldDocument.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CranfieldQuery.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CranfieldQuery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/QueryResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/QueryResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/ScoredDocument.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/ScoredDocument.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +24,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,7 +43,7 @@
     </layout>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Security Analysis" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -47,40 +53,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AppTest.shouldAnswerWithTrue.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CranfieldParserTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.CranfieldParserTest.foo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CranfieldParserTest.givenRawDocument_ExpectObjectContainingIdAndAuthor.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CranfieldParserTest.givenRawQuery_ExpectObjectContainingIdAndText.executor&quot;: &quot;Debug&quot;,
-    &quot;Maven.lucene-individual-project [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/lukas/dev/information_retrieval/lucene-individual-project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.Application.executor": "Run",
+    "Application.Main.executor": "Run",
+    "JUnit.AppTest.shouldAnswerWithTrue.executor": "Run",
+    "JUnit.CranfieldParserTest.executor": "Debug",
+    "JUnit.CranfieldParserTest.foo.executor": "Run",
+    "JUnit.CranfieldParserTest.givenRawDocument_ExpectObjectContainingIdAndAuthor.executor": "Run",
+    "JUnit.CranfieldParserTest.givenRawQuery_ExpectObjectContainingIdAndText.executor": "Debug",
+    "Maven.lucene-individual-project [clean,install].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ShowUsagesActions.previewPropertyKey": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/lukas/dev/information_retrieval/lucene-individual-project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.lukas.app.models" />
@@ -107,9 +113,9 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Application">
-    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lukas.app.Application" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lukas.app.Main" />
       <module name="lucene-individual-project" />
       <extension name="coverage">
         <pattern>
@@ -186,7 +192,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.CranfieldParserTest.givenRawDocument_ExpectObjectContainingIdAndAuthor" />
         <item itemvalue="JUnit.CranfieldParserTest.givenRawQuery_ExpectObjectContainingIdAndText" />
         <item itemvalue="JUnit.CranfieldParserTest" />
@@ -225,7 +231,11 @@
       <workItem from="1759829178329" duration="10042000" />
       <workItem from="1759907643131" duration="42000" />
       <workItem from="1759918811122" duration="70000" />
-      <workItem from="1759919433931" duration="4895000" />
+      <workItem from="1759919433931" duration="4985000" />
+      <workItem from="1760526148675" duration="992000" />
+      <workItem from="1760527680734" duration="34000" />
+      <workItem from="1760527717004" duration="21000" />
+      <workItem from="1760527755214" duration="67000" />
     </task>
     <servers />
   </component>
