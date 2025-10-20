@@ -9,7 +9,7 @@ public record QueryResult(
         List<ScoredDocument> scoredDocuments
 ) {
 
-    public String createTrecEvalResult() {
+    public String asTrecEvalResult() {
         // format: query_id Q0 doc_id rank score run_name
         String runId = UUID.randomUUID().toString().substring(0, 5);
         return scoredDocuments.stream()
