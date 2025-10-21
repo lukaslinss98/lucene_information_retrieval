@@ -24,10 +24,10 @@ public class TrecEvalRunner {
         Files.writeString(resultsPath, trecEvalResults);
 
         ProcessBuilder pb = new ProcessBuilder(
-                "trec_eval",
+                "trec_eval", // has to be on PATH
                 "-m", "map",
-                "-m", "recall.5",
-                "-m", "P.5",
+                "-m", "recall.5,10,20",
+                "-m", "P.5,10,20",
                 qrelsPath.toString(),
                 resultsPath.toString()
         );
@@ -64,7 +64,11 @@ public class TrecEvalRunner {
                 similarity,
                 metrics.getOrDefault("map", 0f),
                 metrics.getOrDefault("recall_5", 0f),
-                metrics.getOrDefault("P_5", 0f)
+                metrics.getOrDefault("recall_10", 0f),
+                metrics.getOrDefault("recall_20", 0f),
+                metrics.getOrDefault("P_5", 0f),
+                metrics.getOrDefault("P_10", 0f),
+                metrics.getOrDefault("P_20", 0f)
         );
     }
 }

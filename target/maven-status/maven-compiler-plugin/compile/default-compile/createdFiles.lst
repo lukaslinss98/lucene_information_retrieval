@@ -11,6 +11,7 @@ com/lukas/app/services/IndexService.class
 com/lukas/app/models/AnalyzerSimilarityPair.class
 com/lukas/app/models/CranfieldQuery.class
 com/lukas/app/services/TrecEvalRunner.class
+com/lukas/app/models/CustomAnalyzer.class
 com/lukas/app/models/TrecEvalResult.class
 com/lukas/app/services/CommandLineArgumentsService.class
 com/lukas/app/models/CommandLineArguments.class

@@ -7,20 +7,38 @@ public record TrecEvalResult(
         Analyzer usedAnalyzer,
         Similarity usedSimilarity,
         Float meanAveragePrecision,
-        Float recall,
-        Float precisionAtFive
+        Float recallAtFive,
+        Float recallAtTen,
+        Float recallAtTwenty,
+        Float precisionAtFive,
+        Float precisionAtTen,
+        Float precisionAtTwenty
 ) {
 
     @SuppressWarnings("NullableProblems")
     @Override
     public String toString() {
-        return "Analyzer: %s,\nSimilar: %s,\nmean average precision: %s,\nrecall: %s,\nprecision at 5: %s\n"
-                .formatted(
-                        usedAnalyzer.getClass().getSimpleName(),
-                        usedSimilarity.getClass().getSimpleName(),
-                        meanAveragePrecision,
-                        recall,
-                        precisionAtFive
-                );
+        return """
+            Analyzer: %s
+            Similarity: %s
+            mean average precision (MAP): %.4f
+            Recall@5: %.4f
+            Recall@10: %.4f
+            Recall@20: %.4f
+            Precision@5: %.4f
+            Precision@10: %.4f
+            Precision@20: %.4f
+            """.formatted(
+                usedAnalyzer.getClass().getSimpleName(),
+                usedSimilarity.getClass().getSimpleName(),
+                meanAveragePrecision,
+                recallAtFive,
+                recallAtTen,
+                recallAtTwenty,
+                precisionAtFive,
+                precisionAtTen,
+                precisionAtTwenty
+        );
     }
+
 }

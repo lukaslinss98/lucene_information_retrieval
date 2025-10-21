@@ -18,6 +18,7 @@ import org.apache.lucene.store.Directory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class QueryService {
     private final IndexSearcher indexSearcher;
@@ -28,7 +29,11 @@ public class QueryService {
         this.analyzer = analyzer;
     }
 
-    public static QueryService create(Analyzer analyzer, Similarity similarity, Directory indexDirectory) {
+    public static QueryService create(
+            Analyzer analyzer,
+            Similarity similarity,
+            Directory indexDirectory
+    ) {
         try {
             IndexReader indexReader = DirectoryReader.open(indexDirectory);
             IndexSearcher indexSearcher = new IndexSearcher(indexReader);
@@ -40,13 +45,11 @@ public class QueryService {
     }
 
     public QueryResult query(CranfieldQuery cranfieldQuery) {
-        String[] fields = {"text", "title"};
-        QueryParser parser = new MultiFieldQueryParser(fields, analyzer);
+        QueryParser queryParser = createQueryParser(analyzer);
         String cleanedQuery = QueryParser.escape(cranfieldQuery.text());
 
         try {
-
-            Query query = parser.parse(cleanedQuery);
+            Query query = queryParser.parse(cleanedQuery);
             List<ScoreDoc> scoreDocs = List.of(indexSearcher.search(query, 50).scoreDocs);
 
             ArrayList<ScoredDocument> scoredDocuments = new ArrayList<>();
@@ -56,12 +59,27 @@ public class QueryService {
                 ScoredDocument scoredDocument = new ScoredDocument(
                         indexSearcher.storedFields().document(scoreDoc.doc).get("id"),
                         scoreDoc.score,
-                        i + 1);
+                        i + 1
+                );
                 scoredDocuments.add(scoredDocument);
             }
             return new QueryResult(cranfieldQuery, scoredDocuments);
         } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static QueryParser createQueryParser(Analyzer analyzer) {
+        Map<String, Float> boosts = Map.of(
+                "id", 0.1f,
+                "title", 2.0f,
+                "text", 1.0f,
+                "author", 0.3f
+        );
+        return new MultiFieldQueryParser(
+                new String[]{"text", "title", "author", "id"},
+                analyzer,
+                boosts
+        );
     }
 }

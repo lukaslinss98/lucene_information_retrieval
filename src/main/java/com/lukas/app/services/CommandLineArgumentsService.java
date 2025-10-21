@@ -1,6 +1,7 @@
 package com.lukas.app.services;
 
 import com.lukas.app.models.CommandLineArguments;
+import com.lukas.app.models.CustomAnalyzer;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
@@ -10,13 +11,14 @@ import org.apache.lucene.analysis.de.GermanAnalyzer;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.analysis.es.SpanishAnalyzer;
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
+import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.search.similarities.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 public class CommandLineArgumentsService {
 
@@ -56,9 +58,8 @@ public class CommandLineArgumentsService {
             case "whitespace" -> new WhitespaceAnalyzer();
             case "stop" -> new StopAnalyzer(EnglishAnalyzer.getDefaultStopSet());
             case "keyword" -> new KeywordAnalyzer();
-            case "german" -> new GermanAnalyzer();
-            case "french" -> new FrenchAnalyzer();
-            case "spanish" -> new SpanishAnalyzer();
+            case "custom" -> new CustomAnalyzer();
+            case "perfield" -> createPerFieldAnalyzer();
             default -> throw new IllegalArgumentException(
                     "Unknown analyzers: '%s'. Supported: standard, english, simple, whitespace, stop, keyword, german, french, spanish"
                             .formatted(analyzerArg)
@@ -66,11 +67,6 @@ public class CommandLineArgumentsService {
         };
     }
 
-    private static List<Analyzer> createAnalyzers(String analyzers) {
-        return Arrays.stream(analyzers.split(","))
-                .map(CommandLineArgumentsService::createAnalyzer)
-                .toList();
-    }
 
     private static Similarity createSimilarity(String similarityArg) {
         return switch (similarityArg.toLowerCase()) {
@@ -84,5 +80,21 @@ public class CommandLineArgumentsService {
                             .formatted(similarityArg)
             );
         };
+    }
+
+    private static Analyzer createPerFieldAnalyzer() {
+        Map<String, Analyzer> perField = Map.of(
+                "id", new KeywordAnalyzer(),
+                "text", new CustomAnalyzer(),
+                "title", new EnglishAnalyzer(),
+                "author", new KeywordAnalyzer()
+        );
+        return new PerFieldAnalyzerWrapper(new EnglishAnalyzer(), perField);
+    }
+
+    private static List<Analyzer> createAnalyzers(String analyzers) {
+        return Arrays.stream(analyzers.split(","))
+                .map(CommandLineArgumentsService::createAnalyzer)
+                .toList();
     }
 }

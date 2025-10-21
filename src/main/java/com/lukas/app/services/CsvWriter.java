@@ -9,17 +9,21 @@ import java.util.List;
 public class CsvWriter {
     public static void writeResultsToCsv(List<TrecEvalResult> results, Path path) throws IOException {
         StringBuilder sb = new StringBuilder();
-        sb.append("analyzer,similarity,map,recall@100,P@5\n");
+        sb.append("analyzer,similarity,map,recall@5,recall@10,recall@20,P@5,P@10,P@20\n");
 
-        for (TrecEvalResult r : results) {
-            sb.append("%s,%s,%.4f,%.4f,%.4f\n".formatted(
-                    r.usedAnalyzer().getClass().getSimpleName(),
-                    r.usedSimilarity().getClass().getSimpleName(),
-                    r.meanAveragePrecision(),
-                    r.recall(),
-                    r.precisionAtFive()
+        results.forEach(result -> {
+            sb.append("%s,%s,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f,%.4f\n".formatted(
+                    result.usedAnalyzer().getClass().getSimpleName(),
+                    result.usedSimilarity().getClass().getSimpleName(),
+                    result.meanAveragePrecision(),
+                    result.recallAtFive(),
+                    result.recallAtTen(),
+                    result.recallAtTwenty(),
+                    result.precisionAtFive(),
+                    result.precisionAtTen(),
+                    result.precisionAtTwenty()
             ));
-        }
+        });
 
         Files.writeString(path, sb.toString());
     }
