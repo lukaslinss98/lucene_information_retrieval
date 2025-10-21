@@ -14,10 +14,8 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.similarities.Similarity;
 import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +28,8 @@ public class QueryService {
         this.analyzer = analyzer;
     }
 
-    public static QueryService create(Path indexPath, Analyzer analyzer, Similarity similarity) {
-        try (Directory indexDirectory = FSDirectory.open(indexPath)) {
+    public static QueryService create(Analyzer analyzer, Similarity similarity, Directory indexDirectory) {
+        try {
             IndexReader indexReader = DirectoryReader.open(indexDirectory);
             IndexSearcher indexSearcher = new IndexSearcher(indexReader);
             indexSearcher.setSimilarity(similarity);

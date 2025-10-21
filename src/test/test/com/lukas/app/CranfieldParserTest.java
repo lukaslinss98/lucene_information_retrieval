@@ -62,7 +62,7 @@ class CranfieldParserTest {
         String rawQuery = """
                 .I 001
                 .W
-                what similarity laws must be obeyed when constructing aeroelastic models
+                what similarities laws must be obeyed when constructing aeroelastic models
                 of heated high speed aircraft .
                 """;
         // when
@@ -77,7 +77,7 @@ class CranfieldParserTest {
                 )
                 .contains(
                         1,
-                        "what similarity laws must be obeyed when constructing aeroelastic models of heated high speed aircraft ."
+                        "what similarities laws must be obeyed when constructing aeroelastic models of heated high speed aircraft ."
                 );
     }
 }

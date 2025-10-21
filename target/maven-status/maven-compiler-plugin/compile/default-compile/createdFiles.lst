@@ -1,9 +1,16 @@
+com/lukas/app/services/CombinationsService.class
 com/lukas/app/services/CranfieldParser.class
 com/lukas/app/services/QueryService.class
+com/lukas/app/services/CsvWriter.class
 com/lukas/app/services/FileReader.class
 com/lukas/app/models/QueryResult.class
 com/lukas/app/models/CranfieldDocument.class
 com/lukas/app/models/ScoredDocument.class
 com/lukas/app/Main.class
 com/lukas/app/services/IndexService.class
+com/lukas/app/models/AnalyzerSimilarityPair.class
 com/lukas/app/models/CranfieldQuery.class
+com/lukas/app/services/TrecEvalRunner.class
+com/lukas/app/models/TrecEvalResult.class
+com/lukas/app/services/CommandLineArgumentsService.class
+com/lukas/app/models/CommandLineArguments.class

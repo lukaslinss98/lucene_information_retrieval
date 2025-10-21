@@ -1,9 +1,16 @@
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/Main.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/AnalyzerSimilarityPair.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/CommandLineArguments.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/CranfieldDocument.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/CranfieldQuery.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/QueryResult.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/ScoredDocument.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/models/TrecEvalResult.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/services/CombinationsService.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/services/CommandLineArgumentsService.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/services/CranfieldParser.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/services/CsvWriter.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/services/FileReader.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/services/IndexService.java
 /Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/services/QueryService.java
+/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/java/com/lukas/app/services/TrecEvalRunner.java

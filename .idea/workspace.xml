@@ -5,26 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d1b2361-63f1-404d-8eb4-ea984f198c29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CommandLineArguments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/CommandLineArgumentsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/FileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/IndexService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/TrecEvalRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lukas/app/services/CommandLineArgumentsServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/AnalyzerSimilarityPair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/TrecEvalResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/CombinationsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/CsvWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/CranfieldParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/CranfieldParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/QueryResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/QueryResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CommandLineArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CommandLineArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/CommandLineArgumentsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/CommandLineArgumentsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/IndexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/IndexService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/QueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/QueryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/CranfieldParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/TrecEvalRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/TrecEvalRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lukas/app/services/CommandLineArgumentsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lukas/app/services/CommandLineArgumentsServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/test/com/lukas/app/CranfieldParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test/com/lukas/app/CranfieldParserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/QueryResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/QueryResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CommandLineArguments.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CommandLineArguments.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/services/CommandLineArgumentsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/services/CommandLineArgumentsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/services/IndexService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/services/IndexService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/services/QueryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/services/QueryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/lucene-individual-project-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/services/TrecEvalRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/services/TrecEvalRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lucene-cli-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/lucene-cli-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-lucene-cli-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-lucene-cli-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lukas/app/services/CommandLineArgumentsServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lukas/app/services/CommandLineArgumentsServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +39,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Record" />
         <option value="JUnit5 Test Class" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -69,14 +73,19 @@
     "Application.Application.executor": "Run",
     "Application.Main.executor": "Run",
     "JUnit.AppTest.shouldAnswerWithTrue.executor": "Run",
+    "JUnit.CommandLineArgumentsServiceTest.executor": "Run",
     "JUnit.CommandLineArgumentsServiceTest.getCommandLineArgumentsTest.executor": "Run",
+    "JUnit.CommandLineArgumentsServiceTest.receiveAnalyzerFlag_ExpectObjWithEnglishAnalyzer.executor": "Run",
+    "JUnit.CommandLineArgumentsServiceTest.receiveSimilaritiesAndAnalyzerFlags_ExpectObjWithTwoLists.executor": "Run",
     "JUnit.CommandLineArgumentsServiceTest.receiveSimilarityAndAnalyzerFlag_ExpectObjWithClassicSimilarityAndEnglishAnalyzer.executor": "Run",
     "JUnit.CommandLineArgumentsServiceTest.receiveSimilarityFlag_ExpectObjWithClassicSimilarity.executor": "Run",
     "JUnit.CranfieldParserTest.executor": "Debug",
     "JUnit.CranfieldParserTest.foo.executor": "Run",
     "JUnit.CranfieldParserTest.givenRawDocument_ExpectObjectContainingIdAndAuthor.executor": "Run",
     "JUnit.CranfieldParserTest.givenRawQuery_ExpectObjectContainingIdAndText.executor": "Debug",
+    "Maven.lucene-cli [clean,install].executor": "Run",
     "Maven.lucene-cli [clean,package].executor": "Run",
+    "Maven.lucene-cli [clean].executor": "Run",
     "Maven.lucene-individual-project [clean,install].executor": "Run",
     "Maven.lucene-individual-project [clean,package].executor": "Run",
     "Maven.lucene-individual-project [clean].executor": "Run",
@@ -108,8 +117,8 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.lukas.app.services" />
-      <recent name="com.lukas.app" />
       <recent name="com.lukas.app.models" />
+      <recent name="com.lukas.app" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/lukas/app" />
@@ -130,9 +139,9 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="mvn clean install" />
       <command value="mvn exec:java" />
       <command value="mvn package" />
+      <command value="mvn clean install" />
       <command value="mvn clean" />
       <command value="mvn clean package" />
     </option>
@@ -141,13 +150,29 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lukas.app.Main" />
       <module name="lucene-individual-project" />
-      <option name="PROGRAM_PARAMETERS" value="--analyzer english --similarity bm25" />
+      <option name="PROGRAM_PARAMETERS" value="--analyzers english,standard --similarities bm25,classic" />
+      <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED --add-modules jdk.incubator.vector" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lukas.app.models.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommandLineArgumentsServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lucene-individual-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lukas.app.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lukas.app.services" />
+      <option name="MAIN_CLASS_NAME" value="com.lukas.app.services.CommandLineArgumentsServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -168,7 +193,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommandLineArgumentsServiceTest.receiveSimilarityAndAnalyzerFlag_ExpectObjWithClassicSimilarityAndEnglishAnalyzer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommandLineArgumentsServiceTest.receiveSimilaritiesAndAnalyzerFlags_ExpectObjWithTwoLists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lucene-individual-project" />
       <extension name="coverage">
         <pattern>
@@ -178,7 +203,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.lukas.app.services" />
       <option name="MAIN_CLASS_NAME" value="com.lukas.app.services.CommandLineArgumentsServiceTest" />
-      <option name="METHOD_NAME" value="receiveSimilarityAndAnalyzerFlag_ExpectObjWithClassicSimilarityAndEnglishAnalyzer" />
+      <option name="METHOD_NAME" value="receiveSimilaritiesAndAnalyzerFlags_ExpectObjWithTwoLists" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -200,36 +225,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CranfieldParserTest.givenRawDocument_ExpectObjectContainingIdAndAuthor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="lucene-individual-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lukas.app.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.lukas.app" />
-      <option name="MAIN_CLASS_NAME" value="com.lukas.app.CranfieldParserTest" />
-      <option name="METHOD_NAME" value="givenRawDocument_ExpectObjectContainingIdAndAuthor" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.CommandLineArgumentsServiceTest" />
+      <item itemvalue="JUnit.CommandLineArgumentsServiceTest.receiveSimilaritiesAndAnalyzerFlags_ExpectObjWithTwoLists" />
       <item itemvalue="JUnit.CommandLineArgumentsServiceTest.receiveAnalyzerFlag_ExpectObjWithEnglishAnalyzer" />
-      <item itemvalue="JUnit.CommandLineArgumentsServiceTest.receiveSimilarityAndAnalyzerFlag_ExpectObjWithClassicSimilarityAndEnglishAnalyzer" />
       <item itemvalue="JUnit.CommandLineArgumentsServiceTest.receiveSimilarityFlag_ExpectObjWithClassicSimilarity" />
-      <item itemvalue="JUnit.CranfieldParserTest.givenRawDocument_ExpectObjectContainingIdAndAuthor" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CommandLineArgumentsServiceTest.receiveSimilarityAndAnalyzerFlag_ExpectObjWithClassicSimilarityAndEnglishAnalyzer" />
+        <item itemvalue="JUnit.CommandLineArgumentsServiceTest.receiveSimilaritiesAndAnalyzerFlags_ExpectObjWithTwoLists" />
         <item itemvalue="JUnit.CommandLineArgumentsServiceTest.receiveSimilarityFlag_ExpectObjWithClassicSimilarity" />
         <item itemvalue="JUnit.CommandLineArgumentsServiceTest.receiveAnalyzerFlag_ExpectObjWithEnglishAnalyzer" />
-        <item itemvalue="JUnit.CranfieldParserTest.givenRawDocument_ExpectObjectContainingIdAndAuthor" />
+        <item itemvalue="JUnit.CommandLineArgumentsServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +280,8 @@
       <workItem from="1760527755214" duration="67000" />
       <workItem from="1760528084193" duration="34000" />
       <workItem from="1760528125549" duration="983000" />
-      <workItem from="1760991191087" duration="7589000" />
+      <workItem from="1760991191087" duration="7776000" />
+      <workItem from="1761031106757" duration="9371000" />
     </task>
     <servers />
   </component>
