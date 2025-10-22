@@ -17,8 +17,6 @@ public class TrecEvalRunner {
             Analyzer analyzer,
             Similarity similarity
     ) throws IOException {
-
-
         Path qrelsPath = Paths.get("/Users/lukas/dev/information_retrieval/lucene_information_retrieval/src/main/resources/cranqrel");
         Path resultsPath = Paths.get("../query_results.txt");
         Files.writeString(resultsPath, trecEvalResults);

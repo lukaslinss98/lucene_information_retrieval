@@ -35,19 +35,18 @@ public class Main {
         );
 
         List<TrecEvalResult> trecEvalResults = pairs.stream()
-                .map(pair -> scoreAnalyzerSimilarityCombination(
-                        pair.analyzer(),
-                        pair.similarity()
-                ))
+                .map(Main::scoreAnalyzerSimilarityCombination)
                 .peek(System.out::println)
                 .toList();
 
         CsvWriter.writeResultsToCsv(trecEvalResults, Path.of("../lucene_evaluation.csv"));
     }
 
-    private static TrecEvalResult scoreAnalyzerSimilarityCombination(Analyzer analyzer, Similarity similarity) {
-        try (Directory inMemoryDirectory = new ByteBuffersDirectory()) {
+    private static TrecEvalResult scoreAnalyzerSimilarityCombination(AnalyzerSimilarityPair analyzerSimilarityPair) {
+        Analyzer analyzer = analyzerSimilarityPair.analyzer();
+        Similarity similarity = analyzerSimilarityPair.similarity();
 
+        try (Directory inMemoryDirectory = new ByteBuffersDirectory()) {
             IndexService indexService = new IndexService(
                     analyzer,
                     similarity,
@@ -74,7 +73,8 @@ public class Main {
 
             String trecEvalResults = Streams.mapWithIndex(
                             Arrays.stream(rawQueries),
-                            (rawQuery, i) -> CranfieldParser.parseQuery(rawQuery, i + 1))
+                            (rawQuery, i) -> CranfieldParser.parseQuery(rawQuery, i + 1)
+                    )
                     .map(queryService::query)
                     .map(QueryResult::asTrecEvalResult)
                     .collect(Collectors.joining("\n"));
@@ -88,5 +88,4 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
-
 }
