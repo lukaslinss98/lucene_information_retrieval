@@ -12,16 +12,16 @@ public class CombinationsService {
     public static List<AnalyzerSimilarityPair> createCombinations(
             List<Analyzer> analyzers,
             List<Similarity> similarities,
-            Supplier<AnalyzerSimilarityPair> defaultProvider
+            Supplier<AnalyzerSimilarityPair> defaultPair
     ) {
         if (analyzers.isEmpty() && similarities.isEmpty()) {
-            return List.of(defaultProvider.get());
+            return List.of(defaultPair.get());
         }
         if (similarities.isEmpty()) {
-            return buildPairs(analyzers, List.of(defaultProvider.get().similarity()));
+            return buildPairs(analyzers, List.of(defaultPair.get().similarity()));
         }
         if (analyzers.isEmpty()) {
-            return buildPairs(List.of(defaultProvider.get().analyzer()), similarities);
+            return buildPairs(List.of(defaultPair.get().analyzer()), similarities);
         }
 
         return buildPairs(analyzers, similarities);

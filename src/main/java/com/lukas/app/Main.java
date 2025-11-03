@@ -1,7 +1,11 @@
 package com.lukas.app;
 
 import com.google.common.collect.Streams;
+import com.lukas.app.io.CsvWriter;
+import com.lukas.app.io.FileReader;
 import com.lukas.app.models.*;
+import com.lukas.app.parsers.CommandLineArgumentsParser;
+import com.lukas.app.parsers.CranfieldParser;
 import com.lukas.app.services.*;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
@@ -19,73 +23,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
-    private static final Analyzer DEFAULT_ANALYZER = new SimpleAnalyzer();
-    private static final Similarity DEFAULT_SIMILARITY = new ClassicSimilarity();
 
     public static void main(String[] args) throws URISyntaxException, IOException {
-        CommandLineArguments arguments = CommandLineArgumentsService.parseArgs(List.of(args));
-
-        List<Analyzer> analyzers = arguments.analyzers();
-        List<Similarity> similarities = arguments.similarities();
+        CommandLineArguments arguments = CommandLineArgumentsParser.parseArgs(List.of(args));
+        ScoringService scoringService = new ScoringService();
 
         List<AnalyzerSimilarityPair> pairs = CombinationsService.createCombinations(
-                analyzers,
-                similarities,
-                () -> new AnalyzerSimilarityPair(DEFAULT_ANALYZER, DEFAULT_SIMILARITY)
+                arguments.analyzers(),
+                arguments.similarities(),
+                AnalyzerSimilarityPair::defaultPair
         );
 
+
         List<TrecEvalResult> trecEvalResults = pairs.stream()
-                .map(Main::scoreAnalyzerSimilarityCombination)
+                .map(scoringService::scoreAnalyzerSimilarityPair)
+                .map(TrecEvalRunner::run)
                 .peek(System.out::println)
                 .toList();
 
-        CsvWriter.writeResultsToCsv(trecEvalResults, Path.of("../lucene_evaluation.csv"));
-    }
-
-    private static TrecEvalResult scoreAnalyzerSimilarityCombination(AnalyzerSimilarityPair analyzerSimilarityPair) {
-        Analyzer analyzer = analyzerSimilarityPair.analyzer();
-        Similarity similarity = analyzerSimilarityPair.similarity();
-
-        try (Directory inMemoryDirectory = new ByteBuffersDirectory()) {
-            IndexService indexService = new IndexService(
-                    analyzer,
-                    similarity,
-                    inMemoryDirectory
-            );
-
-            String rawCollection = FileReader.readFiles("/cran.all.1400");
-            String rawQueryFile = FileReader.readFiles("/cran.qry");
-
-            List<Document> documents = Arrays.stream(rawCollection.split("(?=\\.I)"))
-                    .map(CranfieldParser::parseDocument)
-                    .map(CranfieldDocument::toLuceneDocument)
-                    .toList();
-
-            indexService.addDocuments(documents);
-
-            QueryService queryService = QueryService.create(
-                    analyzer,
-                    similarity,
-                    inMemoryDirectory
-            );
-
-            String[] rawQueries = rawQueryFile.split("(?=\\.I)");
-
-            String trecEvalResults = Streams.mapWithIndex(
-                            Arrays.stream(rawQueries),
-                            (rawQuery, i) -> CranfieldParser.parseQuery(rawQuery, i + 1)
-                    )
-                    .map(queryService::query)
-                    .map(QueryResult::asTrecEvalResult)
-                    .collect(Collectors.joining("\n"));
-
-            return TrecEvalRunner.run(
-                    trecEvalResults,
-                    analyzer,
-                    similarity
-            );
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        CsvWriter.writeResultsToCsv(trecEvalResults, Path.of("cranfield_evaluation.csv"));
     }
 }

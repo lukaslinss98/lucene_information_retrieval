@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lukas.app</groupId>
-    <artifactId>lucene-cli</artifactId>
+    <artifactId>cranfield-cli</artifactId>
     <version>1.0</version>
 
     <name>lucene-individual-project</name>
