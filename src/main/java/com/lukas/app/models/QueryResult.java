@@ -1,7 +1,6 @@
 package com.lukas.app.models;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public record QueryResult(
@@ -9,9 +8,7 @@ public record QueryResult(
         List<ScoredDocument> scoredDocuments
 ) {
 
-    public String asTrecEvalResult() {
-        // format: query_id Q0 doc_id rank score run_name
-        String runId = UUID.randomUUID().toString().substring(0, 5);
+    public String toTrecRunFormat(String runId) {
         return scoredDocuments.stream()
                 .map(scoredDocument -> "%s Q0 %s %s %s %s".formatted(
                         query.id(),

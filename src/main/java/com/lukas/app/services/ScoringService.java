@@ -3,9 +3,8 @@ package com.lukas.app.services;
 import com.google.common.collect.Streams;
 import com.lukas.app.io.FileReader;
 import com.lukas.app.models.AnalyzerSimilarityPair;
-import com.lukas.app.models.AnalyzerSimilarityScore;
+import com.lukas.app.models.TrecRunScores;
 import com.lukas.app.models.CranfieldDocument;
-import com.lukas.app.models.QueryResult;
 import com.lukas.app.parsers.CranfieldParser;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
@@ -16,13 +15,15 @@ import org.apache.lucene.store.Directory;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class ScoringService {
 
-    public AnalyzerSimilarityScore scoreAnalyzerSimilarityPair(AnalyzerSimilarityPair pair) {
+    public TrecRunScores scoreAnalyzerSimilarityPair(AnalyzerSimilarityPair pair) {
         Analyzer analyzer = pair.analyzer();
         Similarity similarity = pair.similarity();
+        String runId = UUID.randomUUID().toString().substring(0, 5);
 
         try (Directory inMemoryDirectory = new ByteBuffersDirectory()) {
             IndexService indexService = new IndexService(
@@ -54,10 +55,10 @@ public class ScoringService {
                             (rawQuery, i) -> CranfieldParser.parseQuery(rawQuery, i + 1)
                     )
                     .map(queryService::query)
-                    .map(QueryResult::asTrecEvalResult)
+                    .map(queryResult -> queryResult.toTrecRunFormat(runId))
                     .collect(Collectors.collectingAndThen(
                                     Collectors.joining("\n"),
-                                    score -> new AnalyzerSimilarityScore(analyzer, similarity, score)
+                                    score -> new TrecRunScores(analyzer, similarity, score)
                             )
                     );
 
