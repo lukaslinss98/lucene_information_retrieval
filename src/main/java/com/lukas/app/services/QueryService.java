@@ -71,13 +71,13 @@ public class QueryService {
 
     private static QueryParser createQueryParser(Analyzer analyzer) {
         Map<String, Float> boosts = Map.of(
-                "id", 0.1f,
-                "title", 2.0f,
-                "text", 1.0f,
-                "author", 0.3f
+                "text", 3.0f,
+                "title", 1.5f,
+                "author", 0.5f,
+                "bibliography", 0.1f
         );
         return new MultiFieldQueryParser(
-                new String[]{"text", "title", "author", "id"},
+                new String[]{"text", "title", "author", "bibliography"},
                 analyzer,
                 boosts
         );

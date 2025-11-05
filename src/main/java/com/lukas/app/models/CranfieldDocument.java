@@ -8,6 +8,7 @@ import org.apache.lucene.document.TextField;
 public record CranfieldDocument(
         Integer id,
         String title,
+        String bibliography,
         String author,
         String text
 ) {
@@ -15,6 +16,7 @@ public record CranfieldDocument(
         Document document = new Document();
         document.add(new StringField("id", id.toString(), Field.Store.YES));
         document.add(new TextField("title", title, Field.Store.YES));
+        document.add(new TextField("bibliography", title, Field.Store.YES));
         document.add(new TextField("author", author, Field.Store.YES));
         document.add(new TextField("text", text, Field.Store.YES));
 

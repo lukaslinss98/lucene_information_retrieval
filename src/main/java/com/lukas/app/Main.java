@@ -26,7 +26,6 @@ public class Main {
 
     public static void main(String[] args) throws URISyntaxException, IOException {
         CommandLineArguments arguments = CommandLineArgumentsParser.parseArgs(List.of(args));
-        ScoringService scoringService = new ScoringService();
 
         List<AnalyzerSimilarityPair> pairs = CombinationsService.createCombinations(
                 arguments.analyzers(),
@@ -34,6 +33,7 @@ public class Main {
                 AnalyzerSimilarityPair::defaultPair
         );
 
+        ScoringService scoringService = new ScoringService();
 
         List<TrecEvalResult> trecEvalResults = pairs.stream()
                 .map(scoringService::scoreAnalyzerSimilarityPair)

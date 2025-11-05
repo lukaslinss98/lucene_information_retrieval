@@ -11,6 +11,7 @@ public class CranfieldParser {
     public static CranfieldDocument parseDocument(String rawDocument) {
         Integer id = null;
         String title = null;
+        String bibliography = null;
         String author = null;
         String text = null;
 
@@ -25,6 +26,7 @@ public class CranfieldParser {
             switch (fieldType) {
                 case "I" -> id = Integer.parseInt(fieldContent);
                 case "T" -> title = fieldContent;
+                case "B" -> bibliography = fieldContent;
                 case "A" -> author = fieldContent;
                 case "W" -> text = fieldContent;
             }
@@ -32,6 +34,7 @@ public class CranfieldParser {
         return new CranfieldDocument(
                 id,
                 title,
+                bibliography,
                 author,
                 text
         );
