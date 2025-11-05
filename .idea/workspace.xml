@@ -5,22 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d1b2361-63f1-404d-8eb4-ea984f198c29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/analyzers/CustomAnalyzer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/analyzers/PerFieldAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CommandLineArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CommandLineArguments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CranfieldDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CranfieldDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/models/CustomAnalyzer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/parsers/CommandLineArgumentsParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/parsers/CommandLineArgumentsParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/parsers/CranfieldParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/parsers/CranfieldParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/QueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/QueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/io/CsvWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/io/CsvWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/CombinationsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/CombinationsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/TrecEvalRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lukas/app/services/TrecEvalRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/AnalyzerSimilarityPair.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/AnalyzerSimilarityPair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CommandLineArguments.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CommandLineArguments.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CranfieldDocument.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CranfieldDocument.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CustomAnalyzer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CranfieldQuery.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/CranfieldQuery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/QueryResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/QueryResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/ScoredDocument.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/ScoredDocument.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/models/TrecEvalResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/models/TrecEvalResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/services/CombinationsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/services/CombinationsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/services/IndexService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/services/IndexService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/services/QueryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/services/QueryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lukas/app/services/TrecEvalRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lukas/app/services/TrecEvalRunner.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +291,7 @@
       <workItem from="1762250432299" duration="790000" />
       <workItem from="1762262021951" duration="396000" />
       <workItem from="1762264886138" duration="369000" />
-      <workItem from="1762332695605" duration="3515000" />
+      <workItem from="1762332695605" duration="4149000" />
     </task>
     <servers />
   </component>

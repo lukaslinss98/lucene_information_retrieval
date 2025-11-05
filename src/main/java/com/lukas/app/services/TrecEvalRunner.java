@@ -2,12 +2,15 @@ package com.lukas.app.services;
 
 import com.lukas.app.models.AnalyzerSimilarityScore;
 import com.lukas.app.models.TrecEvalResult;
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.search.similarities.Similarity;
 
-import java.io.*;
-import java.nio.file.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

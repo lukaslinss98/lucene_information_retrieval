@@ -4,7 +4,6 @@ import com.lukas.app.models.AnalyzerSimilarityPair;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.search.similarities.Similarity;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
